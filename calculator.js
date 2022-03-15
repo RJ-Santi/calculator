@@ -25,10 +25,11 @@ app.get("/bmicalculator", function(req, res) {
 });
 
 app.post("/bmicalculator", function(req, res) {
-  var height = Number(req.body.height);
-  var weight = Number(req.body.weight);
+  var height = parseFloat(req.body.height);
+  var weight = parseFloat(req.body.weight);
 
-  var answer = Math.round((weight / Math.pow(height, 2) * 703));
+  var answer = (weight / Math.pow(height, 2) * 703);
+  answer = answer.toFixed(2);
 
   res.send("The result of your calculation is a BMI of " + answer + ".")
 });
